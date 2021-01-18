@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <title>
+        素因数分解
+    </title>
+    <meta http-equiv="Content-Type"  charset="utf-8" />  
+</html>
+<body>
+   <div id="app">
+       <input v-model="number">
+       <button v-on:click="getnumber">素因数分解</button>
+       <p>{{result}}</p>
+   </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script>
+    var ap=new Vue({
+      el:"#app",
+      data:{
+            number:null,
+            result:"",
+      },
+     methods:{
+         getnumber:function(){
+                
+                 
+                    this.result="";
+                    if(this.number==2||this.number==1){
+                     this.result=this.number+"^1";
+                 }
+                 else{
+                     var rnumber=this.number;
+                     var count=0;
+                     for(var i=2;i<=this.number;i++){
+                         
+                         
+                            if(rnumber%i==0){
+                             rnumber=rnumber/i;
+                             
+                             count=count+1;
+                             i=i-1;
+                         }
+                         else{
+                             if(count!=0){
+                                this.result=this.result+i+"^"+count+"*";
+                             count=0;
+                             if(rnumber==1){
+                                break;
+                             }
+                             }
+                            
+                         }
+                         
+                             
+                         
+                     }
+                     
+                 }
+                 
+                
+             
+         },
+         test:function(){
+            
+         }
+
+     }
+
+
+    })
+</script>
